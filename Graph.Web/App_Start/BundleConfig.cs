@@ -19,6 +19,7 @@ namespace Graph.Web
                     .Include("~/Scripts/sweetalert/sweet-alert.css")
                     .Include("~/Content/flags/famfamfam-flags.css", new CssRewriteUrlTransform())
                     .Include("~/Content/font-awesome.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/bootstrap.min.css", new CssRewriteUrlTransform())
                 );
 
             //~/Bundles/App/vendor/js
@@ -33,10 +34,7 @@ namespace Graph.Web
                         "~/Scripts/jquery-2.1.4.min.js",
                         "~/Scripts/jquery-ui-1.11.4.min.js",
 
-                        "~/Scripts/bootstrap.min.js",
-                        
-                        "~/Scripts/d3/d3.min.js",
-                        "~/Scripts/jsnetworkx.js",
+                        "~/Scripts/bootstrap.min.js",   
 
                         "~/Scripts/moment-with-locales.min.js",
                         "~/Scripts/jquery.blockUI.js",
@@ -58,7 +56,10 @@ namespace Graph.Web
                         "~/Abp/Framework/scripts/libs/abp.toastr.js",
                         "~/Abp/Framework/scripts/libs/abp.blockUI.js",
                         "~/Abp/Framework/scripts/libs/abp.spin.js",
-                        "~/Abp/Framework/scripts/libs/angularjs/abp.ng.js"
+                        "~/Abp/Framework/scripts/libs/angularjs/abp.ng.js",
+
+                        "~/Scripts/d3/d3.min.js",
+                        "~/Scripts/jsnetworkx.js"
                     )
                 );
 
