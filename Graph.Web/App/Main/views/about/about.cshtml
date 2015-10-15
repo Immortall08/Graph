@@ -1,13 +1,45 @@
 ﻿<div ng-controller="app.views.about as vm">  
     <table width="100%" height="100%">
+        <thead></thead>
         <tr>
-
             <td>
                 <div id="canvas"></div> 
+                
             </td>
-        </tr>
-        
-        <tr>
+            <td class="tools" width="200px" style="vertical-align:top; padding-left:20px;">
+                <h5 class="edit">Панель редактирования
+                </h5>
+                <br>
+                <label>Настройки генератора</label>
+                <br>
+                <button type="button" class="btn btn-primary" ng-click="vm.fastGnpRandomGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; fastGnpRandomGraph</button>
+                <br>
+                <button type="button" class="btn btn-success" ng-click="vm.gnpRandomGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; gnpRandomGraph</button>
+                <br />
+                <button type="button" class="btn btn-info" ng-click="vm.binomialGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; binomialGraph</button>
+                <button type="button" class="btn btn-warning" ng-click="vm.erdosRenyiGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; erdosRenyiGraph</button>
+                <br>
+                <label>Количество вершин</label>
+                <input type="text" ng-model="vm.n">
+                <input type="range" min="0" max="1000" step="10" ng-model="vm.n">
+                <label>Коэффициент p</label>
+                <input type="text" ng-model="vm.p">
+                <input type="range" min="0" max="1" step="0.01" ng-model="vm.p">
+
+                <br>
+                <label>Редактирование графа</label>
+                <div class="btn-group"> 
+                    <label>Вершины</label> <br>
+                    <button class="btn btn-success" ng-model="vm.addNode" uib-btn-radio btn-radio-true="true" btn-radio-false="false"><i class="fa fa-plus-circle fa-lg"></i></button>
+                    <button class="btn btn-danger" ng-model="vm.removeNode" uib-btn-radio btn-radio-true="true" btn-radio-false="false"><i class="fa fa-trash-o fa-lg"></i></button>
+                    <br><label>Ребра</label><br>
+                    <button class="btn btn-success" ng-model="vm.addEdge" uib-btn-radio btn-radio-true="true" btn-radio-false="false"><i class="fa fa-plus-circle fa-lg"></i></button>
+                    <button class="btn btn-danger" ng-model="vm.removeEdge" uib-btn-radio btn-radio-true="true" btn-radio-false="false"><i class="fa fa-trash-o fa-lg"></i></button>                    
+                </div>
+
+            </td>
+        </tr>        
+        <!--<tr>
             <td>
                 <br>
                 <div style="text-align:left">Настройки</div>
@@ -28,6 +60,6 @@
                 <input type="text" ng-model="vm.p">
                 <input type="range" min="0" max="1" step="0.01"  ng-model="vm.p">
             </td>
-        </tr>    
+        </tr> -->   
     </table>
 </div>

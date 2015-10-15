@@ -16,26 +16,42 @@
             vm.erdosRenyiGraph = erdosRenyiGraph;
             vm.cliques;
             vm.numberOfCliques;
+
+            vm.addNode = false;
+            vm.addEdge = false;
+            vm.removeNode = false;
+            vm.removeEdge = false;
             
             draw();
             
 
             function draw() {
-                var color = d3.scale.category20();
+                var color = d3.scale.category20();                
+                var degree = jsnx.degree(vm.G);
                 jsnx.draw(vm.G, {
                     element: '#canvas',
                     layoutAttr: {
-                        charge: -120,
-                        linkDistance: 20
+                        charge: -120,                        
+                        gravity: 0.1,
+                        linkDistance: 60                       
                     },
                     height: 600,
                     withLabels: true,
+                    with_edge_labels: true,
                     weighted: true,                    
                     edgeStyle: {
                         'stroke-width': 1
-                    }
+                    },
+                    nodeStyle: {
+                        fill: function(d) { 
+                            return color(jsnx.degree(vm.G, d.node));
+                        }                    
+                    },
+                    stickyDrag: true
 
-                });                
+                });
+                
+                console.log(Array.from(degree));
                
             }
 
