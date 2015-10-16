@@ -27,12 +27,12 @@
 
             function draw() {
                 var color = d3.scale.category20();                
-                var degree = jsnx.degree(vm.G);
+                var degree = jsnx.degree(vm.G).values();
                 jsnx.draw(vm.G, {
                     element: '#canvas',
                     layoutAttr: {
                         charge: -120,                        
-                        gravity: 0.1,
+                        gravity: 1,
                         linkDistance: 60                       
                     },
                     height: 600,
@@ -51,7 +51,7 @@
 
                 });
                 
-                console.log(Array.from(degree));
+                console.log(degree);
                
             }
 
