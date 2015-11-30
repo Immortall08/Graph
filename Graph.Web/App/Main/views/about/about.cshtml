@@ -22,13 +22,13 @@
                 <br>
                 <label>Количество вершин</label>
                 <input type="text" ng-model="vm.n">
-                <input type="range" min="0" max="1000" step="10" ng-model="vm.n">
+                <input type="range" min=0 max=1000 step=10 ng-model="vm.n">
                 <label>Число m</label>
                 <input type="text" ng-model="vm.m">
-                <input type="range" min="0" max="10" step="0.1" ng-model="vm.m">
+                <input type="range" min=0 max=10 step=1 ng-model="vm.m">
                 <label>Коэффициент p</label>
                 <input type="text" ng-model="vm.p">
-                <input type="range" min="0" max="1" step="0.01" ng-model="vm.p">
+                <input type="range" min=0 max=1 step=0.01 ng-model="vm.p">
 
                 <br>
                 <label>Редактирование графа</label>
@@ -41,7 +41,7 @@
                     <button class="btn btn-danger" ng-model="vm.removeEdge" uib-btn-radio btn-radio-true="true" btn-radio-false="false"><i class="fa fa-trash-o fa-lg"></i></button>                    
                 </div>
                 <div>
-                    <button class="btn btn-success" ng-click="vm.draw_upd()"><i class="fa fa-plus-circle fa-lg"></i></button>
+                    <button class="btn btn-success" ng-click="vm.randHistogramm()"><i class="fa fa-plus-circle fa-lg"></i></button>
                 </div>
 
             </td>

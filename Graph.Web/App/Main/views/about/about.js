@@ -6,9 +6,9 @@
             //About logic...
 
             vm.G = new jsnx.Graph();
-            vm.n = 50;
-            vm.p = 0.1;
-            vm.m = 2;
+            vm.n = "50";
+            vm.p = "0.1";
+            vm.m = "2";
             vm.optDirected = false;
             
             vm.gnpRandomGraph = gnpRandomGraph;
@@ -25,7 +25,7 @@
             vm.removeEdge = false;
             vm.draw = draw;
             vm.g_add_node = g_add_node;
-            vm.degreeHistogram ;
+            vm.randHistogramm = randHistogramm;
 
             draw();
             
@@ -88,42 +88,36 @@
                 draw();
             };
             function barabasiAlbertGraph() {
-                vm.G = genBarabasiAlbertGraph(vm.n, vm.m);
+                vm.G = genBarabasiAlbertGraph(Number(vm.n), Number(vm.m));
                 console.log(jsnx.degreeHistogram(vm.G));
                 draw();
-            };
+            };        
 
-            function genBarabasiAlbertGraph(n,m){
+            function genBarabasiAlbertGraph(n, m) {
                 var G = new jsnx.Graph();
                 var edges;
-                var rangeN = range(n);
-                var targets = range(m);
+                var rangeN = d3.range(n);
+                var targets = d3.range(m);
                 var repeatedNodes = [];
                 var source = m;
-                //var sourceArray = [];
-                G.name = 'barabasi_albert_graph('+n+', '+m+')';
+                var sourceArray = [];
+                G.name = 'barabasi_albert_graph(' + n + ', ' + m + ')';
 
                 while (source < n) {
-                    //sourceArray = [];
-                    // Add edges to m nodes from the source.
-                    for (var i = 0; i < m; i++) {
-                        G.addEdge(source, targets[i]);
-                        // And the new node "source" has m edges to add to the list.
-                        repeatedNodes.push(source);
-                    };
-                    //G.addEdgesFrom(zip([source] * m, targets));
-                    // Add one node to the list for each new edge just created.
-                    for (var i = 0; i < m; i++) {
-                        repeatedNodes.push(targets[i]);
+                    sourceArray = [];
+                    for(var i=0; i<m; i++){
+                        sourceArray.push(source);
                     }
-                    
-                    // Now choose m unique nodes from the existing nodes
-                    // Pick uniformly from repeated_nodes (preferential attachement)
-                    //console.log(targets);
+                    G.addEdgesFrom(d3.zip(sourceArray, targets));
+                    // Add one node to the list for each new edge just created.
+                    //repeatedNodes.push(targets);
+                    //# And the new node "source" has m edges to add to the list.
+                    //repeatedNodes.push(sourceArray);
+                    repeatedNodes = d3.merge([repeatedNodes, sourceArray, targets]);
                     targets = _random_subset(repeatedNodes, m);
                     //console.log(targets);
                     source += 1;
-                }                
+                }
                 return G;
 
             };
@@ -141,32 +135,67 @@
             function getRandomInt(min, max) {
                 return Math.floor(Math.random() * (max - min + 1)) + min;
             };
-            function range(optStart, optEnd, optStep) {
+            /*function range(optStart, optEnd, optStep) {
                 //console.log(Array.from(genRange(optStart, optEnd, optStep)));
-                return Array.from(genRange(optStart, optEnd, optStep));
-            };
-            function* genRange(optStart, optEnd, optStep) {
+                return Array.from(d3.range(optStart,optEnd,optStep));
+            };    */        
+            function randHistogramm(){
+                // Generate a Bates distribution of 10 random variables.
+                var values = d3.range(1000).map(d3.random.bates(10));
 
-                if (optStart == null) {
-                    return;
-                }
-                else if (optEnd == null) {
-                    optEnd = optStart;
-                    optStart = 0;
-                    optStep = 1;
-                }
-                else if (optStep == null) {
-                    optStep = 1;
-                }
-                else if (optStep === 0) {
-                    throw new RangeError("opt_step can't be 0");
-                }
+                // A formatter for counts.
+                var formatCount = d3.format(",.0f");
 
-                var negative = optStep < 0;
-                for (var i = optStart; negative && i > optEnd || !negative && i < optEnd; i += optStep) {
-                    yield i;
-                }
-            };
+                var margin = { top: 10, right: 30, bottom: 30, left: 30 },
+                    width = 960 - margin.left - margin.right,
+                    height = 500 - margin.top - margin.bottom;
+
+                var x = d3.scale.linear()
+                    .domain([0, 1])
+                    .range([0, width]);
+
+                // Generate a histogram using twenty uniformly-spaced bins.
+                var data = d3.layout.histogram()
+                    .bins(x.ticks(20))
+                    (values);
+
+                var y = d3.scale.linear()
+                    .domain([0, d3.max(data, function (d) { return d.y; })])
+                    .range([height, 0]);
+
+                var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .orient("bottom");
+
+                var svg = d3.select("body").append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                  .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                var bar = svg.selectAll(".bar")
+                    .data(data)
+                  .enter().append("g")
+                    .attr("class", "bar")
+                    .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+                bar.append("rect")
+                    .attr("x", 1)
+                    .attr("width", x(data[0].dx) - 1)
+                    .attr("height", function (d) { return height - y(d.y); });
+
+                bar.append("text")
+                    .attr("dy", ".75em")
+                    .attr("y", 6)
+                    .attr("x", x(data[0].dx) / 2)
+                    .attr("text-anchor", "middle")
+                    .text(function (d) { return formatCount(d.y); });
+
+                svg.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis);
+            }
         }
         
     ]);
