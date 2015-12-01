@@ -31,6 +31,7 @@
             
 
             function draw() {
+                if (vm.n > 500) return;
                 var color = d3.scale.category20();                
                 var degree = jsnx.degree(vm.G).values();
                 jsnx.draw(vm.G, {
@@ -107,15 +108,12 @@
                     sourceArray = [];
                     for(var i=0; i<m; i++){
                         sourceArray.push(source);
-                    }
-                    G.addEdgesFrom(d3.zip(sourceArray, targets));
+                    }                    
                     // Add one node to the list for each new edge just created.
-                    //repeatedNodes.push(targets);
-                    //# And the new node "source" has m edges to add to the list.
-                    //repeatedNodes.push(sourceArray);
+                    G.addEdgesFrom(d3.zip(sourceArray, targets));
+                    // And the new node "source" has m edges to add to the list.                    
                     repeatedNodes = d3.merge([repeatedNodes, sourceArray, targets]);
-                    targets = _random_subset(repeatedNodes, m);
-                    //console.log(targets);
+                    targets = _random_subset(repeatedNodes, m);                    
                     source += 1;
                 }
                 return G;
@@ -134,67 +132,65 @@
             
             function getRandomInt(min, max) {
                 return Math.floor(Math.random() * (max - min + 1)) + min;
-            };
-            /*function range(optStart, optEnd, optStep) {
-                //console.log(Array.from(genRange(optStart, optEnd, optStep)));
-                return Array.from(d3.range(optStart,optEnd,optStep));
-            };    */        
-            function randHistogramm(){
-                // Generate a Bates distribution of 10 random variables.
-                var values = d3.range(1000).map(d3.random.bates(10));
-
-                // A formatter for counts.
-                var formatCount = d3.format(",.0f");
-
-                var margin = { top: 10, right: 30, bottom: 30, left: 30 },
+            };                 
+            function randHistogramm() {
+                d3.select(".histogramm").remove();
+                var data = jsnx.degreeHistogram(vm.G);
+                console.log(data);
+                var margin = { top: 20, right: 20, bottom: 30, left: 40 },
                     width = 960 - margin.left - margin.right,
                     height = 500 - margin.top - margin.bottom;
 
-                var x = d3.scale.linear()
-                    .domain([0, 1])
-                    .range([0, width]);
-
-                // Generate a histogram using twenty uniformly-spaced bins.
-                var data = d3.layout.histogram()
-                    .bins(x.ticks(20))
-                    (values);
+                var x = d3.scale.ordinal()
+                    .rangeRoundBands([0, width], .1);
 
                 var y = d3.scale.linear()
-                    .domain([0, d3.max(data, function (d) { return d.y; })])
-                    .range([height, 0]);
+                    .range([height, 0]);               
 
                 var xAxis = d3.svg.axis()
                     .scale(x)
                     .orient("bottom");
 
+                var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient("left")
+                    .tickValues(data);
+                var dataSum = d3.sum(data);
+                x.domain(data.map(function (d, index) { return index }));
+                //x.domain([0, data.length]);
+                y.domain([0, d3.max(data, function (d) { return d ; })]);
+                //y2.domain([0, d3.max(data, function (d) { return d / dataSum; })]);
+
                 var svg = d3.select("body").append("svg")
+                    .attr("class", "histogramm")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
-                  .append("g")
+                    .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-                var bar = svg.selectAll(".bar")
-                    .data(data)
-                  .enter().append("g")
-                    .attr("class", "bar")
-                    .attr("transform", function (d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
-
-                bar.append("rect")
-                    .attr("x", 1)
-                    .attr("width", x(data[0].dx) - 1)
-                    .attr("height", function (d) { return height - y(d.y); });
-
-                bar.append("text")
-                    .attr("dy", ".75em")
-                    .attr("y", 6)
-                    .attr("x", x(data[0].dx) / 2)
-                    .attr("text-anchor", "middle")
-                    .text(function (d) { return formatCount(d.y); });
 
                 svg.append("g")
                     .attr("class", "x axis")
                     .attr("transform", "translate(0," + height + ")")
                     .call(xAxis);
+
+                svg.append("g")
+                    .attr("class", "y axis")
+                    .call(yAxis)
+                    .append("text")
+                    .attr("transform", "rotate(-90)")
+                    .attr("y", 6)
+                    .attr("dy", ".71em")
+                    .style("text-anchor", "end")
+                    .text("Frequency");
+                svg.selectAll(".bar")
+                    .data(data)
+                    .enter().append("rect")
+                    .attr("class", "bar")
+                    .attr("x", function (d, index) { return x(index); })
+                    .attr("width", x.rangeBand())
+                    .attr("y", function (d) { return y(d); })
+                    .attr("height", function (d) { return height - y(d); });
+
             }
         }
         

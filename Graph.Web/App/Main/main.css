@@ -38,17 +38,25 @@ body {
     border: 1px solid #aaa;
 }
 
-.bar rect {
+.bar {
   fill: steelblue;
-  shape-rendering: crispEdges;
 }
 
-.bar text {
-  fill: #fff;
+.bar:hover {
+  fill: brown;
 }
 
-.axis path, .axis line {
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
 }
