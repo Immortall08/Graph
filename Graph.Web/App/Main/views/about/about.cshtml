@@ -23,15 +23,19 @@
                 <label>Количество вершин</label>
                 <input type="text" ng-model="vm.n">
                 <input type="range" min=0 max=1000 step=10 ng-model="vm.n">
-                <label>Число m</label>
+                <!--<label>Число m</label>
                 <input type="text" ng-model="vm.m">
-                <input type="range" min=0 max=10 step=1 ng-model="vm.m">
-                <label>Коэффициент p</label>
+                <input type="range" min=0 max=10 step=1 ng-model="vm.m">-->
+                <label>Вероятность нахождения дуги</label>
                 <input type="text" ng-model="vm.p">
                 <input type="range" min=0 max=1 step=0.01 ng-model="vm.p">
 
                 <br>
-                <label>Редактирование графа</label>
+                <button class="btn" ng-click="vm.randHistogramm()"><i class="fa fa-bar-chart fa-lg"></i>&nbsp;Распределение степеней вершин</button>
+                <button class="btn" ng-click="vm.removeNodes(vm.G)"><i class="fa fa-cogs fa-lg"></i>&nbsp;Уничтожить часть вершин графа</button>
+                <button class="btn" ng-click="vm.myPlot2($scope.gridOptions2.data)"><i class="fa fa-cogs fa-lg"></i>&nbsp;Рассчитать эпидемию</button>
+                               
+                <!--<label>Редактирование графа</label>
                 <div class="btn-group"> 
                     <label>Вершины</label> <br>
                     <button class="btn btn-success" ng-model="vm.addNode" uib-btn-radio btn-radio-true="true" btn-radio-false="false"><i class="fa fa-plus-circle fa-lg"></i></button>
@@ -39,34 +43,55 @@
                     <br><label>Ребра</label><br>
                     <button class="btn btn-success" ng-model="vm.addEdge" uib-btn-radio btn-radio-true="true" btn-radio-false="false"><i class="fa fa-plus-circle fa-lg"></i></button>
                     <button class="btn btn-danger" ng-model="vm.removeEdge" uib-btn-radio btn-radio-true="true" btn-radio-false="false"><i class="fa fa-trash-o fa-lg"></i></button>                    
-                </div>
-                <div>
-                    <button class="btn btn-success" ng-click="vm.randHistogramm()"><i class="fa fa-plus-circle fa-lg"></i></button>
-                </div>
+                </div>-->
+                
 
             </td>
-        </tr>        
-        <!--<tr>
-            <td>
-                <br>
-                <div style="text-align:left">Настройки</div>
-                <br>
-                <button type="button" class="btn btn-primary" ng-click="vm.fastGnpRandomGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; fastGnpRandomGraph</button>
-                <button type="button" class="btn btn-success" ng-click="vm.gnpRandomGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; gnpRandomGraph</button>
-                <button type="button" class="btn btn-info" ng-click="vm.binomialGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; binomialGraph</button>
-                <button type="button" class="btn btn-warning" ng-click="vm.erdosRenyiGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; erdosRenyiGraph</button>
-            </td>            
-        </tr>   
+        </tr> 
         <tr>
             <td>
-                <br>
-                <label>Количество вершин</label>
-                <input type="text" ng-model="vm.n">
-                <input type="range" min="0" max="1000" step="10" ng-model="vm.n">
-                <label>Коэффициент p</label>
-                <input type="text" ng-model="vm.p">
-                <input type="range" min="0" max="1" step="0.01"  ng-model="vm.p">
+                <div>
+                    <!--<button class="btn" ng-click="vm.randHistogramm()"><i class="fa fa-bar-chart fa-lg"></i>&nbsp;Распределение степеней вершин</button>  
+                    <button class="btn" ng-click="vm.removeNodes(vm.G)"><i class="fa fa-cogs fa-lg"></i>&nbsp;Уничтожить часть вершин графа</button> 
+                    <button class="btn" ng-click="vm.myPlot2($scope.gridOptions2.data)"><i class="fa fa-cogs fa-lg"></i>&nbsp;Рассчитать</button>-->
+                    <label>Загрузить сеть из файла</label>
+                    <input type="file" name="file" onchange="angular.element(this).scope().vm.uploadFile(this.files)" />                  
+                </div>
+            </td>            
+        </tr>    
+       
+        <tr>
+            <td>
+                <div>
+                    <label>Информация по изображенному графу</label> <br>
+                </div>
+                <div>
+                    <text> Число вершин сети = {{vm.G.nodes().length}}</text>                   
+                </div>
+                <div>                    
+                    <text> Число ребер сети = {{vm.G.edges().length}}</text>                    
+                </div>
+                <div>                    
+                    <text> Глобальная эффективность сети = {{vm.E}}</text>
+                </div>
             </td>
-        </tr> -->   
+        </tr>       
+    
     </table>
+    <br />
+    <div>        
+        <table>
+            <tr>
+                <td>
+                    <label>Матрица переходов</label>
+                    <div id="grid1" ui-grid="gridOptions" ui-grid-edit class="myGrid"></div>
+                </td>
+                <td>
+                    <label>Начальные параметры</label>
+                    <div id="grid2" ui-grid="gridOptions2" ui-grid-edit class="myGrid2"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
 </div>

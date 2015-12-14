@@ -8,6 +8,9 @@
         'ui.router',
         'ui.bootstrap',
         'ui.jq',
+        'ui.grid',
+        'ui.grid.edit',
+
         
 
         'abp'

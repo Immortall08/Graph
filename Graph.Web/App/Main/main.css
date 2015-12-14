@@ -60,3 +60,21 @@ body {
 .x.axis path {
   display: none;
 }
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 400px; 
+    height: 300px
+}
+.myGrid {
+    width: 400px;
+    height: 250px;
+  }
+.myGrid2 {
+    width: 550px;
+    height: 250px;
+  }

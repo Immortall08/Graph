@@ -201,6 +201,9 @@
     <Content Include="Abp\Framework\styles\abp.mixings.min.css" />
     <Content Include="Abp\Framework\styles\utils\ie10fix.css" />
     <Content Include="App\Main\app.js" />
+    <Content Include="App\Main\content\ui-grid.css" />
+    <Content Include="App\Main\content\ui-grid.min.css" />
+    <Content Include="App\Main\content\ui-grid.svg" />
     <Content Include="App\Main\images\abp-logo.png" />
     <Content Include="App\Main\main.css">
       <DependentUpon>main.less</DependentUpon>
@@ -257,6 +260,9 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="Content\ui-grid.css" />
+    <Content Include="Content\ui-grid.min.css" />
+    <Content Include="Content\ui-grid.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -339,6 +345,12 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Scripts\d3\LICENSE" />
+    <Content Include="Content\ui-grid.woff" />
+    <Content Include="Content\ui-grid.ttf" />
+    <Content Include="Content\ui-grid.eot" />
+    <Content Include="App\Main\content\ui-grid.eot" />
+    <Content Include="App\Main\content\ui-grid.ttf" />
+    <Content Include="App\Main\content\ui-grid.woff" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
@@ -1114,16 +1126,19 @@
     <Content Include="Scripts\sweetalert\sweet-alert.min.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\ui-grid.js" />
+    <Content Include="Scripts\ui-grid.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Scripts\angular-ui\BundleConfig.cs" />
     <Compile Include="App_Start\GraphNavigationProvider.cs" />
     <Compile Include="App_Start\GraphWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GraphControllerBase.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1146,6 +1161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Main\modules\" />
+    <Folder Include="App_Data\Uploads\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

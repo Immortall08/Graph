@@ -4,6 +4,7 @@
         '$scope', function($scope) {
             var vm = this;
             //Home logic...
+            
         }
     ]);
 })();

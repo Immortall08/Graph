@@ -15,8 +15,9 @@ namespace Graph.Web
                 new StyleBundle("~/Bundles/App/vendor/css")
                     .Include("~/Content/themes/base/all.css", new CssRewriteUrlTransform())
                     .Include("~/Content/bootstrap-cosmo.min.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/toastr.min.css")
+                    .Include("~/Content/toastr.min.css", new CssRewriteUrlTransform())
                     .Include("~/Scripts/sweetalert/sweet-alert.css")
+                    .Include("~/Scripts/ui-grid.min.css", new CssRewriteUrlTransform())
                     .Include("~/Content/flags/famfamfam-flags.css", new CssRewriteUrlTransform())
                     .Include("~/Content/font-awesome.min.css", new CssRewriteUrlTransform())
                     //.Include("~/Content/bootstrap.min.css", new CssRewriteUrlTransform())
@@ -50,6 +51,7 @@ namespace Graph.Web
                         "~/Scripts/angular-ui/ui-bootstrap.min.js",
                         "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js",
                         "~/Scripts/angular-ui/ui-utils.min.js",
+                        "~/Scripts/ui-grid.min.js",
 
                         "~/Abp/Framework/scripts/abp.js",
                         "~/Abp/Framework/scripts/libs/abp.jquery.js",
