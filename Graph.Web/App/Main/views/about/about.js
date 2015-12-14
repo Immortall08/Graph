@@ -437,7 +437,7 @@
                       
                     if(mysl[i] > 0 ){
                         mdlNetwork[pos]=[];
-                        mdlNetwork[pos][0] = Number(pos+1);
+                        mdlNetwork[pos][0] = Number(i+1);
                         mdlNetwork[pos][1] = Number(mysl[i]);
                         mdlNetwork[pos][2] = Number(0);
                         mdlNetwork[pos][3] = Number(0);
@@ -531,6 +531,7 @@
                 console.log('matrix');
                 console.log(matrix);
                 $scope.matrix = matrix;
+                $scope.n = n;
                 //myplot2();
 
                 //Рассчитывает эпидемию по модели из методички
@@ -620,7 +621,7 @@
 
                 var count = 0; // Число шагов эпидемии, которые мы посчитали
                 var gPoints =[];
-                while (count < 100) {
+                while (count < $scope.n) {
 
                     //Переписали в матрицу с текущим количеством вершин разных состояний по слоям значения из матрицы для расчетов
                     // В mass[] хранятся параметры для i-ого шага, а в mass2[] - для i+1 ого
