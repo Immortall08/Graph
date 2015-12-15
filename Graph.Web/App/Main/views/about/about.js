@@ -122,7 +122,13 @@
             function draw() {  
                 //console.log( getTransitionMatrix($scope.gridOptions.data))
                 vm.E = ShortestPathLength(vm.G);
-                if (vm.n > 500) return;
+                if (vm.n > 500) {
+                    if(vm.G.numberOfNodes() >0){
+                        epidemic(toMatrix(vm.G));
+                    }
+                    return;
+                }
+                
                 var color = d3.scale.category20();                
                 var degree = jsnx.degree(vm.G).values();             
                 jsnx.draw(vm.G, {
@@ -684,6 +690,7 @@
                             console.log( "S " + s);
                             ps = matrix[j][i];
                             console.log( "PS " + ps);
+                            if (j==0) s++;
                             v = v + (is*(s-1)*ps*ks*ks);
                         }
 
@@ -828,10 +835,10 @@
                         var n_obs = mass[i][0]+mass[i][1]+mass[i][2]+mass[i][3]+mass[i][4]+mass[i][5];
                         console.log('n_obs');
                         console.log(n_obs);
-                        /*if (n_obs > n_vers) {
+                        if (n_obs > n_vers) {
                             mass[i][0] = 0;
                             mass[i][2] = n_vers - (mass[i][1]+mass[i][3]+mass[i][4]+mass[i][5]);
-                        }*/
+                        }
 
 
                     }

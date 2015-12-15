@@ -57,9 +57,7 @@ body {
   shape-rendering: crispEdges;
 }
 
-.x.axis path {
-  display: none;
-}
+
 path { 
     stroke: steelblue;
     stroke-width: 2;
