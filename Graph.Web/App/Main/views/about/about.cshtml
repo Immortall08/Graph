@@ -6,34 +6,40 @@
                 <div id="canvas"></div> 
                 
             </td>
-            <td class="tools" width="200px" style="vertical-align:top; padding-left:20px;">
-                <h5 class="edit">Панель редактирования
-                </h5>
-                <br>
-                <label>Настройки генератора</label>
-                <br>
-                <button type="button" class="btn btn-primary" ng-click="vm.fastGnpRandomGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; fastGnpRandomGraph</button>
-                <br>
-                <button type="button" class="btn btn-success" ng-click="vm.gnpRandomGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; gnpRandomGraph</button>
+            <td class="tools" width="200px" >
+                <label> Панель редактирования
+                </label>
                 <br />
-                <button type="button" class="btn btn-info" ng-click="vm.binomialGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; binomialGraph</button>
-                <button type="button" class="btn btn-warning" ng-click="vm.erdosRenyiGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; erdosRenyiGraph</button>
-                <button type="button" class="btn btn-danger" ng-click="vm.barabasiAlbertGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; barabasiAlbertGraph</button>
-                <br>
+                <label>Настройки генератора</label>
+                <br />
+                <button type="button" class="btn btn-primary" ng-click="vm.fastGnpRandomGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; Случайная сеть</button>        
+                <br />
+                <button type="button" class="btn btn-info" ng-click="vm.binomialGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; Биномиальная сеть</button>
+                <br />
+                <button type="button" class="btn btn-warning" ng-click="vm.erdosRenyiGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; Сеть Ердеша - Реньи</button>
+                <br />
+                <button type="button" class="btn btn-danger" ng-click="vm.barabasiAlbertGraph()"><i class="fa fa-random fa-fw"></i>&nbsp; Сеть Барбаши - Альберта</button>
+                <br />
                 <label>Количество вершин</label>
+                <br />
                 <input type="text" ng-model="vm.n">
                 <input type="range" min=0 max=1000 step=10 ng-model="vm.n">
-                <!--<label>Число m</label>
+                <label>Число начальных вершин<br> для генерации безмасштабной сети</label>
+                <br />
                 <input type="text" ng-model="vm.m">
-                <input type="range" min=0 max=10 step=1 ng-model="vm.m">-->
+                <input type="range" min=0 max=10 step=1 ng-model="vm.m">
                 <label>Вероятность нахождения дуги</label>
+                <br />
                 <input type="text" ng-model="vm.p">
                 <input type="range" min=0 max=1 step=0.01 ng-model="vm.p">
 
+                <label>Манипуляции с сетью </label>
                 <br>
                 <button class="btn" ng-click="vm.randHistogramm()"><i class="fa fa-bar-chart fa-lg"></i>&nbsp;Распределение степеней вершин</button>
+                <br>
                 <button class="btn" ng-click="vm.removeNodes(vm.G)"><i class="fa fa-cogs fa-lg"></i>&nbsp;Уничтожить часть вершин графа</button>
-                <button class="btn" ng-click="vm.myPlot2($scope.gridOptions2.data)"><i class="fa fa-cogs fa-lg"></i>&nbsp;Рассчитать эпидемию</button>
+                <br>
+                <button class="btn" ng-click="vm.myPlot2($scope.gridOptions2.data)"><i class="fa fa-play fa-lg"></i>&nbsp;Запустить эпидемию</button>
                                
                 <!--<label>Редактирование графа</label>
                 <div class="btn-group"> 
@@ -72,7 +78,7 @@
                     <text> Число ребер сети = {{vm.G.edges().length}}</text>                    
                 </div>
                 <div>                    
-                    <text> Глобальная эффективность сети = {{vm.E}}</text>
+                    <!--<text> Глобальная эффективность сети = {{vm.E}}</text>-->
                 </div>
             </td>
         </tr>       

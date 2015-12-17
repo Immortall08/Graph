@@ -73,6 +73,14 @@ path {
     height: 250px;
   }
 .myGrid2 {
-    width: 550px;
+    width: 520px;
     height: 250px;
   }
+.tools{
+   /* border: solid 1px black;*/
+    vertical-align:top; 
+    padding-left:20px;
+}
+button{
+    margin :5px 5px ;
+}

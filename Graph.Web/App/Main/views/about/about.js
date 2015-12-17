@@ -106,11 +106,11 @@
                 ]
             }; 
             $scope.gridOptions2 =  {
-                enableSorting: false,
+                enableSorting: true,
                 columnDefs: [
-                  { name: 'Слой', field: '0' },
-                  { name: 'Общее число узлов', field: '1' },
-                  { name: 'Заражено', field: '2'  },
+                  { name: 'Слой', field: '0', width :80 },
+                  { name: 'Число узлов', field: '1', width :140 },
+                  { name: 'Заражено', field: '2', width :120  },
                   { name: 'Имунизированно', field: '3' },
                
                 ],
@@ -121,7 +121,7 @@
 
             function draw() {  
                 //console.log( getTransitionMatrix($scope.gridOptions.data))
-                vm.E = ShortestPathLength(vm.G);
+                //vm.E = ShortestPathLength(vm.G);
                 if (vm.n > 500) {
                     if(vm.G.numberOfNodes() >0){
                         epidemic(toMatrix(vm.G));
@@ -193,6 +193,31 @@
             };        
 
             function genBarabasiAlbertGraph(n, m) {
+                var G = new jsnx.Graph();
+                var edges;
+                var rangeN = d3.range(n);
+                var targets = d3.range(m);
+                var repeatedNodes = [];
+                var source = m;
+                var sourceArray = [];
+                G.name = 'barabasi_albert_graph(' + n + ', ' + m + ')';
+
+                while (source < n) {
+                    sourceArray = [];
+                    for(var i=0; i<m; i++){
+                        sourceArray.push(source);
+                    }                    
+                    // Add one node to the list for each new edge just created.
+                    G.addEdgesFrom(d3.zip(sourceArray, targets));
+                    // And the new node "source" has m edges to add to the list.                    
+                    repeatedNodes = d3.merge([repeatedNodes, sourceArray, targets]);
+                    targets = _random_subset(repeatedNodes, m);                    
+                    source += 1;
+                }
+                return G;
+            };
+
+            function smallWord(n, m) {
                 var G = new jsnx.Graph();
                 var edges;
                 var rangeN = d3.range(n);
@@ -344,14 +369,16 @@
                 .then(
                     function (data, ststus) {
                         var json = (data.data).split("");
-                        console.log(json);
+                        
                         var matrix = [];
                         var iCount = 0;
                         var jCount = 0;
+                        var G = new jsnx.Graph();
                         matrix[iCount] = [];
                         for (i = 0; i < json.length; i++) {
                             if (json[i] == "1" || json[i] == "0") {
                                 matrix[iCount][jCount] = Number(json[i]);
+                                if (Number(json[i]) > 0) G.addEdge(iCount,jCount);
                                 jCount += 1;
                             }
                             if (json[i] == "\n") {
@@ -360,8 +387,11 @@
                                 matrix[iCount] = [];
                             }
                         }
+                        console.log(matrix);
+                        vm.G = G;
                         vm.loadMatrix = matrix;
-                        epidemic(matrix);
+                        draw();
+                        //epidemic(matrix);
                     },
                     function (data, status) {
                         console.log(data);
@@ -627,7 +657,8 @@
 
                 var count = 0; // Число шагов эпидемии, которые мы посчитали
                 var gPoints =[];
-                while (count < $scope.n) {
+                var gCurI = 0;
+                while (count < $scope.n && gCurI < $scope.n) {
 
                     //Переписали в матрицу с текущим количеством вершин разных состояний по слоям значения из матрицы для расчетов
                     // В mass[] хранятся параметры для i-ого шага, а в mass2[] - для i+1 ого
@@ -647,6 +678,7 @@
                     for ( i =0; i < n; i++)
                         cur_i = cur_i + mass[i][2];
                     var points =[];
+                    gCurI = cur_i;
                     points.push(cur_i);
                     console.log('вершины');
                     console.log(points);
@@ -858,7 +890,7 @@
                 //var svg = d3.select('[ng-controller="app.views.about as vm"]') 
                 var margin = {top: 30, right: 20, bottom: 30, left: 50},
                     width = 600 - margin.left - margin.right,
-                    height = 270 - margin.top - margin.bottom;
+                    height = 600 - margin.top - margin.bottom;
 
                 // Parse the date / time
                 //var parseDate = d3.time.format("%d-%b-%y").parse;
