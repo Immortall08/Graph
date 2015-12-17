@@ -657,6 +657,8 @@
 
                 var count = 0; // Число шагов эпидемии, которые мы посчитали
                 var gPoints =[];
+                var gPointsU = [];
+                var gPointsRisk = [];
                 var gCurI = 0;
                 while (count < $scope.n && gCurI < $scope.n) {
 
@@ -675,14 +677,24 @@
 
                     //Расчет текущего числа источников эпидемии
                     var cur_i = 0;
-                    for ( i =0; i < n; i++)
+                    var u_i = 0;
+                    var risk = 0;
+                    
+                    
+                    for ( i =0; i < n; i++){
                         cur_i = cur_i + mass[i][2];
-                    var points =[];
+                        u_i += cur_i * 1;
+                    }
+                        
+                    //var points =[];
+                    //var uPoints =[];
                     gCurI = cur_i;
                     points.push(cur_i);
-                    console.log('вершины');
+                    points.push(u_i);
+                    //console.log('вершины');
                     console.log(points);
                     gPoints.push({"x":count, "y":cur_i});
+                    gPoints.push({"x":count, "y":u_i});
 
                     var color = d3.scale.category20();   
 
