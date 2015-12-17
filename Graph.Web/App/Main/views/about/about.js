@@ -349,8 +349,9 @@
                     var node ;//= (Math.floor(Math.random() * G.numberOfNodes()));
                     node = _random_subset(G.nodes(), 1);                   
                     G.removeNodesFrom(node);
-                }                
-                vm.E = ShortestPathLength(G);                
+                }
+                epidemic(toMatrix(G));
+                //vm.E = ShortestPathLength(G);                
             }
             function matrix() {
                 console.log(jsnx.toEdgelist(vm.G));
@@ -640,7 +641,21 @@
 
                 }
                 console.log(mass2);
+                
+                
+                var base_b = 5;
+                var max_u = 0;
+                var max_risk = 0;
+                var max_ep = 0;
+                var summ_b = 0;
+
+                for ( i = 0; i < n; i++){                   
+                    var stepen = mdlNetwork[i][0];
                     
+                    var n_obs = mdlNetwork[i][1];
+
+                    summ_b = summ_b + (base_b + stepen)*n_obs;
+                }
 
 
                 //Заполняем из таблицы матрицу вероятностей
@@ -659,6 +674,7 @@
                 var gPoints =[];
                 var gPointsU = [];
                 var gPointsRisk = [];
+                var gPointsEp=[];
                 var gCurI = 0;
                 while (count < $scope.n && gCurI < $scope.n) {
 
@@ -675,6 +691,8 @@
                     console.log('mass2');
                     console.log(mass2);
 
+
+
                     //Расчет текущего числа источников эпидемии
                     var cur_i = 0;
                     var u_i = 0;
@@ -683,18 +701,18 @@
                     
                     for ( i =0; i < n; i++){
                         cur_i = cur_i + mass[i][2];
-                        u_i += cur_i * 1;
+                        //u_i += cur_i * 1;
                     }
                         
                     //var points =[];
                     //var uPoints =[];
                     gCurI = cur_i;
-                    points.push(cur_i);
-                    points.push(u_i);
+                    //points.push(cur_i);
+                    //points.push(u_i);
                     //console.log('вершины');
-                    console.log(points);
+                    //console.log(points);
                     gPoints.push({"x":count, "y":cur_i});
-                    gPoints.push({"x":count, "y":u_i});
+                    //gPoints.push({"x":count, "y":u_i});
 
                     var color = d3.scale.category20();   
 
@@ -879,23 +897,42 @@
                         var n_obs = mass[i][0]+mass[i][1]+mass[i][2]+mass[i][3]+mass[i][4]+mass[i][5];
                         console.log('n_obs');
                         console.log(n_obs);
-                        if (n_obs > n_vers) {
+                        /*if (n_obs > n_vers) {
                             mass[i][0] = 0;
                             mass[i][2] = n_vers - (mass[i][1]+mass[i][3]+mass[i][4]+mass[i][5]);
-                        }
+                        }*/
 
 
                     }
+                    //Расчет текущего ущерба
+                    var u = 0;
+                    var risk = 0;
+                    var ep = 0;
+                    for ( i=0; i < n; i++){
+                        //var index = mdlNetwork[i][0];
+                        var stepen = mdlNetwork[i][0];
+                        u= u + /*Math.round(*/(base_b+stepen)*mass[i][2]/**1000)/1000*/;
+                        risk = risk + /*Math.round(*/((1-ks)*stepen*u)/**1000)/1000*/;
+                    }
 
+                    ep = /*Math.round(*/((summ_b - u)/u)/**1000)/1000*/;
+                   
+                    
+                    gPointsU.push({"x":count, "y":u});
+                    gPointsRisk.push({"x":count, "y":risk});
+                    gPointsEp.push({"x":count, "y":ep});
                     count++;
 
                 }
-                console.log(gPoints);
-                linearEpidemic(gPoints);
+                //console.log(gPoints);
+                linearEpidemic(gPoints, 'epidemic');
+                linearEpidemic(gPointsU, 'u');
+                linearEpidemic(gPointsRisk, 'risk');
+                linearEpidemic(gPointsEp, 'ep');
 
             };
-            function linearEpidemic(data) {
-                d3.select(".epidemic").remove();
+            function linearEpidemic(data, str) {
+                d3.select('.'+str).remove();
                 //var data = jsnx.degreeHistogram(vm.G);
                 //var data = data[0];
                 console.log(data);
@@ -920,6 +957,7 @@
 
                 // Define the line
                 var valueline = d3.svg.line()
+                    .interpolate("basis")
                     .x(function(d) { return x(d.x); })
                     .y(function(d) { return y(d.y); });
     
@@ -927,7 +965,7 @@
                 var svg = d3.select('[ng-controller="app.views.about as vm"]') 
                     
                     .append("svg")
-                        .attr("class", "epidemic")
+                        .attr("class", str)
                         .attr("width", width + margin.left + margin.right)
                         .attr("height", height + margin.top + margin.bottom)
                     .append("g")
