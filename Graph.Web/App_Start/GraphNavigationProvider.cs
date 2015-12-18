@@ -16,17 +16,18 @@ namespace Graph.Web
             context.Manager.MainMenu
                 .AddItem(
                     new MenuItemDefinition(
-                        "Home",
-                        new LocalizableString("HomePage", GraphConsts.LocalizationSourceName),
-                        url: "#/",
-                        icon: "fa fa-home"
-                        )
-                ).AddItem(
-                    new MenuItemDefinition(
                         "About",
                         new LocalizableString("About", GraphConsts.LocalizationSourceName),
                         url: "#/about",
                         icon: "fa fa-info"
+                        )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
+                        "Home",
+                        new LocalizableString("HomePage", GraphConsts.LocalizationSourceName),
+                        url: "#/",
+                        icon: "fa fa-home"
                         )
                 );
         }

@@ -3292,3 +3292,214 @@ DEBUG 2015-12-17 23:36:54,156 [1    ] Abp.Localization.LocalizationManager     -
 DEBUG 2015-12-17 23:36:54,157 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
 DEBUG 2015-12-17 23:36:54,157 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
 DEBUG 2015-12-17 23:36:54,578 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+DEBUG 2015-12-18 00:07:26,885 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 00:07:27,884 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 00:07:27,887 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,888 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,889 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:07:27,891 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 00:07:28,397 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 00:07:28,400 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 00:07:28,401 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 00:07:28,401 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 00:07:28,816 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+DEBUG 2015-12-18 00:19:28,018 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 00:19:28,657 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 00:19:28,661 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,662 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:19:28,665 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 00:19:29,277 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 00:19:29,280 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 00:19:29,281 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 00:19:29,287 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 00:19:29,661 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+DEBUG 2015-12-18 00:59:48,893 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 00:59:49,862 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 00:59:49,865 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,866 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,866 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 00:59:49,869 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 00:59:50,356 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 00:59:50,359 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 00:59:50,359 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 00:59:50,360 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 00:59:50,767 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+DEBUG 2015-12-18 02:42:47,816 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 02:42:48,465 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 02:42:48,468 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,469 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,469 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,469 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,469 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,469 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,470 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,470 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,470 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,470 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,470 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 02:42:48,472 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 02:42:49,119 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 02:42:49,122 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 02:42:49,123 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 02:42:49,129 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 02:42:49,512 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+DEBUG 2015-12-18 07:16:59,298 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 07:17:01,313 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 07:17:01,317 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,318 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,318 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,318 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,318 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,318 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,319 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,319 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,319 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,319 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,319 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 07:17:01,321 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 07:17:01,890 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 07:17:01,894 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 07:17:01,895 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 07:17:01,895 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 07:17:02,315 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+DEBUG 2015-12-18 08:22:49,819 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 08:22:50,445 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 08:22:50,448 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,449 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,449 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,449 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,449 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,449 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,449 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,449 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,449 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,449 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,449 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:22:50,451 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 08:22:51,214 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 08:22:51,218 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 08:22:51,219 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 08:22:51,228 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 08:22:51,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+WARN  2015-12-18 08:22:55,030 [9    ] Default                                  - Can not find 'О программе' in localization source 'Graph'!
+WARN  2015-12-18 08:22:55,031 [9    ] Default                                  - Can not find 'Главная' in localization source 'Graph'!
+DEBUG 2015-12-18 08:26:14,091 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 08:26:14,711 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 08:26:14,714 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,716 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:26:14,718 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 08:26:15,352 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 08:26:15,356 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 08:26:15,357 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 08:26:15,363 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 08:26:15,741 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+DEBUG 2015-12-18 08:28:20,843 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 08:28:21,449 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 08:28:21,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,455 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:28:21,457 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 08:28:22,047 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 08:28:22,050 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 08:28:22,051 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 08:28:22,051 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 08:28:22,410 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+DEBUG 2015-12-18 08:31:57,093 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 08:31:58,060 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 08:31:58,064 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,065 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,065 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,066 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,066 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,066 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,066 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,066 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,066 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,066 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,066 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:31:58,068 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 08:31:58,543 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 08:31:58,552 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 08:31:58,553 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 08:31:58,553 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 08:31:58,954 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+DEBUG 2015-12-18 08:34:16,757 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 08:34:17,701 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 08:34:17,704 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,706 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,706 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,706 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,706 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,706 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,706 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 08:34:17,708 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 08:34:18,178 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 08:34:18,181 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 08:34:18,182 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 08:34:18,182 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 08:34:18,566 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes
+DEBUG 2015-12-18 09:04:28,145 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2015-12-18 09:04:29,155 [1    ] Abp.Modules.AbpModuleManager             - Found 11 ABP modules in total.
+DEBUG 2015-12-18 09:04:29,158 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,160 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,160 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,160 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,160 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,160 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,160 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphApplicationModule, Graph.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,161 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphCoreModule, Graph.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,161 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphDataModule, Graph.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,161 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.Web.GraphWebModule, Graph.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,161 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Graph.GraphWebApiModule, Graph.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2015-12-18 09:04:29,163 [1    ] Abp.Modules.AbpModuleManager             - 11 modules loaded.
+DEBUG 2015-12-18 09:04:29,640 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2015-12-18 09:04:29,644 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2015-12-18 09:04:29,644 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Graph
+DEBUG 2015-12-18 09:04:29,648 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2015-12-18 09:04:30,044 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 0 classes defines auto mapping attributes

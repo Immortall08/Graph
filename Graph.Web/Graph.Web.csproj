@@ -208,6 +208,7 @@
     <Content Include="App\Main\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="App\Main\scripts\tipsy.js" />
     <Content Include="App\Main\views\layout\header.js" />
     <Content Include="App\Main\views\layout\layout.js" />
     <Content Include="App\Main\views\home\home.js" />

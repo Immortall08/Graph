@@ -20,18 +20,19 @@
     app.config([
         '$stateProvider', '$urlRouterProvider',
         function($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/about');
             $stateProvider
-                .state('home', {
-                    url: '/',
-                    templateUrl: '/App/Main/views/home/home.cshtml',
-                    menu: 'Home' //Matches to name of 'Home' menu in GraphNavigationProvider
-                })
                 .state('about', {
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',
                     menu: 'About' //Matches to name of 'About' menu in GraphNavigationProvider
+                })
+                .state('home', {
+                    url: '/',
+                    templateUrl: '/App/Main/views/home/home.cshtml',
+                    menu: 'Home' //Matches to name of 'Home' menu in GraphNavigationProvider
                 });
+                
         }
     ]);
 })();

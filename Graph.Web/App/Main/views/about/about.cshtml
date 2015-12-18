@@ -39,8 +39,13 @@
                 <br>
                 <button class="btn" ng-click="vm.removeNodes(vm.G)"><i class="fa fa-cogs fa-lg"></i>&nbsp;Уничтожить часть вершин графа</button>
                 <br>
-                <button class="btn" ng-click="vm.myPlot2($scope.gridOptions2.data)"><i class="fa fa-play fa-lg"></i>&nbsp;Запустить эпидемию</button>
-                               
+                <button class="btn" ng-click="vm.myPlot2(0)"><i class="fa fa-play fa-lg"></i>&nbsp;Запустить эпидемию</button>
+                <br>
+                <button class="btn" ng-click="vm.myPlot2(vm.step)"><i class="fa fa-play fa-lg"></i>&nbsp;Запустить эпидемию по шагам</button>
+                <br> 
+                <label>Шаг эпидемии </label>
+                <input type="number" ng-model="vm.step">
+                              
                 <!--<label>Редактирование графа</label>
                 <div class="btn-group"> 
                     <label>Вершины</label> <br>

@@ -12,7 +12,8 @@
             vm.p = "0.1";
             vm.m = "1";
             vm.optDirected = false;
-            vm.E = "0";           
+            vm.E = "0";      
+            vm.step = 1;
             
             vm.gnpRandomGraph = gnpRandomGraph;
             vm.fastGnpRandomGraph = fastGnpRandomGraph;
@@ -40,6 +41,7 @@
             $scope.mdlNetwork=[];
             $scope.gridOptions = {
                 enableSorting: false,
+
                 columnDefs: [
                   { name: '', field: '6' },
                   { name: 'S', field: '0', cellFilter: 'number: 2'},
@@ -295,17 +297,26 @@
                 svg.append("g")
                     .attr("class", "x axis")
                     .attr("transform", "translate(0," + height + ")")
-                    .call(xAxis);
+                    .call(xAxis)
+                  .append("text")
+                    //.attr("transform", "rotate(-90)")
+                    .attr("x", width / 2 )
+                    .attr("y",  0 + margin.bottom)
+                    .attr("dx", "1em")
+                    .style("text-anchor", "middle")
+                    .text("Степень вершин");
 
                 svg.append("g")
                     .attr("class", "y axis")
                     .call(yAxis)
-                  .append("text")
+                  .append("text")                    
                     .attr("transform", "rotate(-90)")
-                    .attr("y", 6)
-                    .attr("dy", ".71em")
-                    .style("text-anchor", "end")
-                    .text("Frequency");
+                    .attr("y", 0 - margin.left)
+                    .attr("x",0 - (height / 2))
+                    .attr("dy", "1em")
+                    .style("text-anchor", "middle")
+        
+                    .text("Число вершин");
                 svg.selectAll(".bar")
                     .data(data)
                     .enter().append("rect")
@@ -575,13 +586,14 @@
 
                          
             }
-            function myplot2() {
+            function myplot2(step) {
                 var mdlNetwork = $scope.gridOptions2.data;
                 var n = mdlNetwork.length; // Число слоев в сети
                 var mdl_fraktal = getTransitionMatrix($scope.gridOptions.data);
                 var mass=[];
                 var mass2=[];
-
+                if (step>0) vm.step++;
+                
 
                 //QColor color;
 
@@ -676,262 +688,268 @@
                 var gPointsRisk = [];
                 var gPointsEp=[];
                 var gCurI = 0;
-                while (count < $scope.n && gCurI < $scope.n) {
+                if (count == $scope.n || gCurI > $scope.n) vm.step = 1;
+                //function epidemicStep(step){
+                    while ((count < $scope.n && gCurI < $scope.n && step == 0) || (step>0 && count<step)) {
 
-                    //Переписали в матрицу с текущим количеством вершин разных состояний по слоям значения из матрицы для расчетов
-                    // В mass[] хранятся параметры для i-ого шага, а в mass2[] - для i+1 ого
+                        //Переписали в матрицу с текущим количеством вершин разных состояний по слоям значения из матрицы для расчетов
+                        // В mass[] хранятся параметры для i-ого шага, а в mass2[] - для i+1 ого
 
-                    for ( i =0; i < n; i++){
-                        for ( j = 0; j < 6; j++) {
-                            mass[i][j] = mass2[i][j];
+                        for ( i =0; i < n; i++){
+                            for ( j = 0; j < 6; j++) {
+                                mass[i][j] = mass2[i][j];
+                            }
                         }
-                    }
-                    console.log('mass');
-                    console.log(mass);
-                    console.log('mass2');
-                    console.log(mass2);
+                        console.log('mass');
+                        console.log(mass);
+                        console.log('mass2');
+                        console.log(mass2);
 
 
 
-                    //Расчет текущего числа источников эпидемии
-                    var cur_i = 0;
-                    var u_i = 0;
-                    var risk = 0;
+                        //Расчет текущего числа источников эпидемии
+                        var cur_i = 0;
+                        var u_i = 0;
+                        var risk = 0;
                     
                     
-                    for ( i =0; i < n; i++){
-                        cur_i = cur_i + mass[i][2];
-                        //u_i += cur_i * 1;
-                    }
+                        for ( i =0; i < n; i++){
+                            cur_i = cur_i + mass[i][2];
+                            //u_i += cur_i * 1;
+                        }
                         
-                    //var points =[];
-                    //var uPoints =[];
-                    gCurI = cur_i;
-                    //points.push(cur_i);
-                    //points.push(u_i);
-                    //console.log('вершины');
-                    //console.log(points);
-                    gPoints.push({"x":count, "y":cur_i});
-                    //gPoints.push({"x":count, "y":u_i});
+                        //var points =[];
+                        //var uPoints =[];
+                        gCurI = cur_i;
+                        //points.push(cur_i);
+                        //points.push(u_i);
+                        //console.log('вершины');
+                        //console.log(points);
+                        gPoints.push({"x":count, "y":cur_i, "type":"Инфицированно"});
+                        //gPoints.push({"x":count, "y":u_i});
 
-                    var color = d3.scale.category20();   
+                        var color = d3.scale.category20();   
 
-                    //Рассчитываем общее число атакованных вершин в слое
-                    // v = Сумма по всем слоям (Число источников в атакующем слое * степень атакующего слоя  * вероятность связности
-                    // * доля зараженных в текущем слое
-                    var v; //Количество атак на вершины рассчитываемого слоя
-                    var is; // Источников инфекции в атакующем слое
-                    var s;   //Степень атакующего слоя
-                    var ps;  // Вероятность связности из матрицы
-                    var ks;  // Доля уязвимых вершин в текущем слое
-                    var matrix = $scope.matrix;
-                    console.log('matrix =====');
-                    console.log(matrix);
+                        //Рассчитываем общее число атакованных вершин в слое
+                        // v = Сумма по всем слоям (Число источников в атакующем слое * степень атакующего слоя  * вероятность связности
+                        // * доля зараженных в текущем слое
+                        var v; //Количество атак на вершины рассчитываемого слоя
+                        var is; // Источников инфекции в атакующем слое
+                        var s;   //Степень атакующего слоя
+                        var ps;  // Вероятность связности из матрицы
+                        var ks;  // Доля уязвимых вершин в текущем слое
+                        var matrix = $scope.matrix;
+                        console.log('matrix =====');
+                        console.log(matrix);
 
-                    console.log( "SHAG " + count);
-                    console.log("==============================================");
+                        console.log( "SHAG " + count);
+                        console.log("==============================================");
 
-                    //Расчет переходов
-                    for ( i = 0; i<n; i++) {
+                        //Расчет переходов
+                        for ( i = 0; i<n; i++) {
 
-                        v = 0;
-                        var n_vers =  mdlNetwork[i][1];
-                        ks = mass[i][0]/n_vers;
-                        console.log( "UYAZVIMIH "+ mass[i][0]);
-                        console.log(" VERSHIN V SLOE "+ n_vers);
-                        console.log("KS "+ ks);
-                        console.log("");
+                            v = 0;
+                            var n_vers =  mdlNetwork[i][1];
+                            ks = mass[i][0]/n_vers;
+                            console.log( "UYAZVIMIH "+ mass[i][0]);
+                            console.log(" VERSHIN V SLOE "+ n_vers);
+                            console.log("KS "+ ks);
+                            console.log("");
 
-                        for ( j = 0; j < n; j++) {
-                            console.log( "+++++ SLOI " + j + " ++++++++");
-                            is = mass[j][2];
-                            console.log( "IS " + mass[j][2]);
+                            for ( j = 0; j < n; j++) {
+                                console.log( "+++++ SLOI " + j + " ++++++++");
+                                is = mass[j][2];
+                                console.log( "IS " + mass[j][2]);
                            
-                             s = mdlNetwork[j][0];
+                                s = mdlNetwork[j][0];
                             
-                            console.log( "S " + s);
-                            ps = matrix[j][i];
-                            console.log( "PS " + ps);
-                            if (j==0) s++;
-                            v = v + (is*(s-1)*ps*ks*ks);
+                                console.log( "S " + s);
+                                ps = matrix[j][i];
+                                console.log( "PS " + ps);
+                                if (j==0) s++;
+                                v = v + (is*(s-1)*ps*ks*ks);
+                            }
+
+
+                            console.log( "VSEGO ATAK " + v);
+                            console.log( " ///////////////////////////////");
+
+                            /////////////////////////////////////////////////
+
+                            //S->E
+                            mass2[i][1] = mass2[i][1] + p[0][2]*v;
+                            mass2[i][0] = mass2[i][0] - p[0][2]*v;
+
+                            //S->I
+                            mass2[i][2] = mass2[i][2] + p[0][1]*v;
+                            mass2[i][0] = mass2[i][0] - p[0][1]*v;
+                            console.log("SHAG " + count + " SLOI  " + i + " mass2 " + mass2[i][2]);
+
+                            //S->M
+                            mass2[i][3] = mass2[i][3] + mass[i][0]*p[0][3];
+                            mass2[i][0] = mass2[i][0] - mass[i][0]*p[0][3];
+
+                            //S->D
+                            mass2[i][4] = mass2[i][4] + mass[i][0]*p[0][4];
+                            mass2[i][0] = mass2[i][0] - mass[i][0]*p[0][4];
+
+                            //S->R
+                            mass2[i][5] = mass2[i][5] + mass[i][0]*p[0][5];
+                            mass2[i][0] = mass2[i][0] - mass[i][0]*p[0][5];
+
+                            //            ////////////////////////////////////////////////
+
+                            //E->S
+                            mass2[i][0] = mass2[i][0] + mass[i][1]*p[2][0];
+                            mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][0];
+
+                            //E->I
+                            mass2[i][2] = mass2[i][2] + mass[i][1]*p[2][1];
+                            mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][1];
+
+                            //E->M
+                            mass2[i][3] = mass2[i][3] + mass[i][1]*p[2][3];
+                            mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][3];
+
+                            //E->D
+                            mass2[i][4] = mass2[i][4] + mass[i][1]*p[2][4];
+                            mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][4];
+
+                            //E->R
+                            mass2[i][5] = mass2[i][5] + mass[i][1]*p[2][5];
+                            mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][5];
+
+                            //            ////////////////////////////////////////////////
+
+                            //I->S
+                            mass2[i][0] = mass2[i][0] + mass[i][2]*p[1][0];
+                            mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][0];
+
+                            //I->E
+                            mass2[i][1] = mass2[i][1] + mass[i][2]*p[1][2];
+                            mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][2];
+
+                            //I->M
+                            mass2[i][3] = mass2[i][3] + mass[i][2]*p[1][3];
+                            mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][3];
+
+                            //I->D
+                            mass2[i][4] = mass2[i][4] + mass[i][2]*p[1][4];
+                            mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][4];
+
+                            //I->R
+                            mass2[i][5] = mass2[i][5] + mass[i][2]*p[1][5];
+                            mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][5];
+
+                            //            ////////////////////////////////////////////////
+
+                            //M->S
+                            mass2[i][0] = mass2[i][0] + mass[i][3]*p[3][0];
+                            mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][0];
+
+                            //M->E
+                            mass2[i][1] = mass2[i][1] + mass[i][3]*p[3][2];
+                            mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][2];
+
+                            //M->I
+                            mass2[i][2] = mass2[i][2] + mass[i][3]*p[3][1];
+                            mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][1];
+
+                            //M->D
+                            mass2[i][4] = mass2[i][4] + mass[i][3]*p[3][4];
+                            mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][4];
+
+                            //M->R
+                            mass2[i][5] = mass2[i][5] + mass[i][3]*p[3][5];
+                            mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][5];
+
+                            //            ////////////////////////////////////////////////
+
+                            //D->S
+                            mass2[i][0] = mass2[i][0] + mass[i][4]*p[4][0];
+                            mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][0];
+
+                            //D->E
+                            mass2[i][1] = mass2[i][1] + mass[i][4]*p[4][2];
+                            mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][2];
+
+                            //D->I
+                            mass2[i][2] = mass2[i][2] + mass[i][4]*p[4][1];
+                            mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][1];
+
+                            //D->M
+                            mass2[i][3] = mass2[i][3] + mass[i][4]*p[4][3];
+                            mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][3];
+
+                            //D->R
+                            mass2[i][5] = mass2[i][5] + mass[i][4]*p[4][5];
+                            mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][5];
+
+                            //            ////////////////////////////////////////////////
+
+                            //R->S
+                            mass2[i][0] = mass2[i][0] + mass[i][5]*p[5][0];
+                            mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][0];
+
+                            //R->E
+                            mass2[i][1] = mass2[i][1] + mass[i][5]*p[5][2];
+                            mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][2];
+
+                            //R->I
+                            mass2[i][2] = mass2[i][2] + mass[i][5]*p[5][1];
+                            mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][1];
+
+                            //R->M
+                            mass2[i][3] = mass2[i][3] + mass[i][5]*p[5][3];
+                            mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][3];
+
+                            //R->D
+                            mass2[i][4] = mass2[i][4] + mass[i][5]*p[5][4];
+                            mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][4];
+
+                            //            ////////////////////////////////////////////////
+                            var n_obs = mass[i][0]+mass[i][1]+mass[i][2]+mass[i][3]+mass[i][4]+mass[i][5];
+                            console.log('n_obs');
+                            console.log(n_obs);
+                            /*if (n_obs > n_vers) {
+                                mass[i][0] = 0;
+                                mass[i][2] = n_vers - (mass[i][1]+mass[i][3]+mass[i][4]+mass[i][5]);
+                            }*/
+
+
+                        }
+                        //Расчет текущего ущерба
+                        var u = 0;
+                        var risk = 0;
+                        var ep = 0;
+                        for ( i=0; i < n; i++){
+                            //var index = mdlNetwork[i][0];
+                            var stepen = mdlNetwork[i][0];
+                            u= u + /*Math.round(*/(base_b+stepen)*mass[i][2]/**1000)/1000*/;
+                            risk = risk + /*Math.round(*/((1-ks)*stepen*u)/**1000)/1000*/;
                         }
 
-
-                        console.log( "VSEGO ATAK " + v);
-                        console.log( " ///////////////////////////////");
-
-                        /////////////////////////////////////////////////
-
-                        //S->E
-                        mass2[i][1] = mass2[i][1] + p[0][2]*v;
-                        mass2[i][0] = mass2[i][0] - p[0][2]*v;
-
-                        //S->I
-                        mass2[i][2] = mass2[i][2] + p[0][1]*v;
-                        mass2[i][0] = mass2[i][0] - p[0][1]*v;
-                        console.log("SHAG " + count + " SLOI  " + i + " mass2 " + mass2[i][2]);
-
-                        //S->M
-                        mass2[i][3] = mass2[i][3] + mass[i][0]*p[0][3];
-                        mass2[i][0] = mass2[i][0] - mass[i][0]*p[0][3];
-
-                        //S->D
-                        mass2[i][4] = mass2[i][4] + mass[i][0]*p[0][4];
-                        mass2[i][0] = mass2[i][0] - mass[i][0]*p[0][4];
-
-                        //S->R
-                        mass2[i][5] = mass2[i][5] + mass[i][0]*p[0][5];
-                        mass2[i][0] = mass2[i][0] - mass[i][0]*p[0][5];
-
-                        //            ////////////////////////////////////////////////
-
-                        //E->S
-                        mass2[i][0] = mass2[i][0] + mass[i][1]*p[2][0];
-                        mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][0];
-
-                        //E->I
-                        mass2[i][2] = mass2[i][2] + mass[i][1]*p[2][1];
-                        mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][1];
-
-                        //E->M
-                        mass2[i][3] = mass2[i][3] + mass[i][1]*p[2][3];
-                        mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][3];
-
-                        //E->D
-                        mass2[i][4] = mass2[i][4] + mass[i][1]*p[2][4];
-                        mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][4];
-
-                        //E->R
-                        mass2[i][5] = mass2[i][5] + mass[i][1]*p[2][5];
-                        mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][5];
-
-                        //            ////////////////////////////////////////////////
-
-                        //I->S
-                        mass2[i][0] = mass2[i][0] + mass[i][2]*p[1][0];
-                        mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][0];
-
-                        //I->E
-                        mass2[i][1] = mass2[i][1] + mass[i][2]*p[1][2];
-                        mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][2];
-
-                        //I->M
-                        mass2[i][3] = mass2[i][3] + mass[i][2]*p[1][3];
-                        mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][3];
-
-                        //I->D
-                        mass2[i][4] = mass2[i][4] + mass[i][2]*p[1][4];
-                        mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][4];
-
-                        //I->R
-                        mass2[i][5] = mass2[i][5] + mass[i][2]*p[1][5];
-                        mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][5];
-
-                        //            ////////////////////////////////////////////////
-
-                        //M->S
-                        mass2[i][0] = mass2[i][0] + mass[i][3]*p[3][0];
-                        mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][0];
-
-                        //M->E
-                        mass2[i][1] = mass2[i][1] + mass[i][3]*p[3][2];
-                        mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][2];
-
-                        //M->I
-                        mass2[i][2] = mass2[i][2] + mass[i][3]*p[3][1];
-                        mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][1];
-
-                        //M->D
-                        mass2[i][4] = mass2[i][4] + mass[i][3]*p[3][4];
-                        mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][4];
-
-                        //M->R
-                        mass2[i][5] = mass2[i][5] + mass[i][3]*p[3][5];
-                        mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][5];
-
-                        //            ////////////////////////////////////////////////
-
-                        //D->S
-                        mass2[i][0] = mass2[i][0] + mass[i][4]*p[4][0];
-                        mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][0];
-
-                        //D->E
-                        mass2[i][1] = mass2[i][1] + mass[i][4]*p[4][2];
-                        mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][2];
-
-                        //D->I
-                        mass2[i][2] = mass2[i][2] + mass[i][4]*p[4][1];
-                        mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][1];
-
-                        //D->M
-                        mass2[i][3] = mass2[i][3] + mass[i][4]*p[4][3];
-                        mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][3];
-
-                        //D->R
-                        mass2[i][5] = mass2[i][5] + mass[i][4]*p[4][5];
-                        mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][5];
-
-                        //            ////////////////////////////////////////////////
-
-                        //R->S
-                        mass2[i][0] = mass2[i][0] + mass[i][5]*p[5][0];
-                        mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][0];
-
-                        //R->E
-                        mass2[i][1] = mass2[i][1] + mass[i][5]*p[5][2];
-                        mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][2];
-
-                        //R->I
-                        mass2[i][2] = mass2[i][2] + mass[i][5]*p[5][1];
-                        mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][1];
-
-                        //R->M
-                        mass2[i][3] = mass2[i][3] + mass[i][5]*p[5][3];
-                        mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][3];
-
-                        //R->D
-                        mass2[i][4] = mass2[i][4] + mass[i][5]*p[5][4];
-                        mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][4];
-
-                        //            ////////////////////////////////////////////////
-                        var n_obs = mass[i][0]+mass[i][1]+mass[i][2]+mass[i][3]+mass[i][4]+mass[i][5];
-                        console.log('n_obs');
-                        console.log(n_obs);
-                        /*if (n_obs > n_vers) {
-                            mass[i][0] = 0;
-                            mass[i][2] = n_vers - (mass[i][1]+mass[i][3]+mass[i][4]+mass[i][5]);
-                        }*/
-
-
-                    }
-                    //Расчет текущего ущерба
-                    var u = 0;
-                    var risk = 0;
-                    var ep = 0;
-                    for ( i=0; i < n; i++){
-                        //var index = mdlNetwork[i][0];
-                        var stepen = mdlNetwork[i][0];
-                        u= u + /*Math.round(*/(base_b+stepen)*mass[i][2]/**1000)/1000*/;
-                        risk = risk + /*Math.round(*/((1-ks)*stepen*u)/**1000)/1000*/;
-                    }
-
-                    ep = /*Math.round(*/((summ_b - u)/u)/**1000)/1000*/;
+                        ep = /*Math.round(*/((summ_b - u)/u)/**1000)/1000*/;
                    
                     
-                    gPointsU.push({"x":count, "y":u});
-                    gPointsRisk.push({"x":count, "y":risk});
-                    gPointsEp.push({"x":count, "y":ep});
-                    count++;
+                        gPointsU.push({"x":count, "y":u, "type":"Ущерб"});
+                        gPointsRisk.push({"x":count, "y":risk, "type":"Риск"});
+                        gPointsEp.push({"x":count, "y":ep, "type":"Эпистойкость"});
+                        count++;
 
-                }
+                        linearEpidemic(gPoints, 'epidemic', 'Шаг эпидемии', 'Число зараженных вершин');
+                        linearEpidemic(gPointsU, 'u', 'Шаг эпидемии', 'Ущерб');
+                        linearEpidemic(gPointsRisk, 'risk', 'Шаг эпидемии', 'Риск');
+                        linearEpidemic(gPointsEp, 'ep', 'Шаг эпидемии', 'Эпистойкость');
+
+                    }
+                //}
                 //console.log(gPoints);
-                linearEpidemic(gPoints, 'epidemic');
-                linearEpidemic(gPointsU, 'u');
-                linearEpidemic(gPointsRisk, 'risk');
-                linearEpidemic(gPointsEp, 'ep');
+                
+                //coolLinear(gPoints);
 
             };
-            function linearEpidemic(data, str) {
+            function linearEpidemic(data, str, xText, yText) {
                 d3.select('.'+str).remove();
                 //var data = jsnx.degreeHistogram(vm.G);
                 //var data = data[0];
@@ -985,17 +1003,39 @@
                 // Add the X Axis
                 svg.append("g")
                     .attr("class", "x axis")
-                    .attr("transform", "translate(0," + height + ")")
-                    .call(xAxis);
+                  .attr("transform", "translate(0," + height + ")")
+                  .call(xAxis)
+                .append("text")
+                  .attr("class", "axisLbl")
+                  //.attr("transform", "rotate(-90)")
+                  .attr("x", width / 2 )
+                  .attr("y",  0 + margin.bottom)
+                  .attr("dx", "1em")
+                  .style("text-anchor", "middle")
+                  //.text("Степень вершин")
+                  
+     
+                    .text(xText);
+                ;
 
                 // Add the Y Axis
                 svg.append("g")
                     .attr("class", "y axis")
-                    .call(yAxis);
+                    .call(yAxis)
+                 .append("text")
+                    .attr("class", "axisLbl")
+                    .attr("transform", "rotate(-90)")
+                    .attr("y", 0 - margin.left)
+                    .attr("x",0 - (height / 2))
+                    .attr("dy", "1em")
+                    .style("text-anchor", "middle")
+                    .text(yText);               
+
+               
 
             };
         
-        
+          
         
         
         

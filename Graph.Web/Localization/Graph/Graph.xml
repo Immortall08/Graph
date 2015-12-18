@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
   <texts>
-    <text name="HomePage" value="Home page" />
-    <text name="About" value="About" />
+    <text name="HomePage" value="О программе" />
+    <text name="About" value="Главная" />
     <text name="WellcomeMessage" value="Welcome to Graph!" />
     <text name="Home_ThisIsATemplate" value="This project template is a starting point to develop web applicatins using..." />
     <text name="Home_AspNetDescription" value="ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that enables a clean separation of concerns and that gives you full control over markup for enjoyable, agile development." />

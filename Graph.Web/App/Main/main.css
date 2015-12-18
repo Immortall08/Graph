@@ -49,6 +49,10 @@ body {
 .axis {
   font: 10px sans-serif;
 }
+.axisLbl{
+    font: 18px sans-serif;
+}
+
 
 .axis path,
 .axis line {
@@ -84,3 +88,6 @@ path {
 button{
     margin :5px 5px ;
 }
+
+
+
