@@ -21,3 +21,4 @@ D:\проекты\Graph\Graph.Core\bin\Debug\Nito.AsyncEx.Enlightenment.xml
 D:\проекты\Graph\Graph.Core\bin\Debug\System.Collections.Immutable.xml
 D:\проекты\Graph\Graph.Core\obj\Debug\Graph.Core.dll
 D:\проекты\Graph\Graph.Core\obj\Debug\Graph.Core.pdb
+D:\проекты\Graph\Graph.Core\obj\Debug\Graph.Core.csprojResolveAssemblyReference.cache

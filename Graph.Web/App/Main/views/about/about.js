@@ -256,7 +256,10 @@
             
             function getRandomInt(min, max) {
                 return Math.floor(Math.random() * (max - min + 1)) + min;
-            };                 
+            };  
+            function Round (num){
+                return Math.abs(Math.round(num*10000)/10000);
+            }
             function randHistogramm() {
                 d3.select(".histogramm").remove();
                 var data = jsnx.degreeHistogram(vm.G);
@@ -647,9 +650,9 @@
                     var susp = index - inf - imm;
                     console.log('susp ' + susp);
 
-                    mass2[i][0] = susp;
-                    mass2[i][2] = inf;
-                    mass2[i][3] = imm;
+                    mass2[i][0] = Round(susp);
+                    mass2[i][2] = Round(inf);
+                    mass2[i][3] = Round(imm);
 
                 }
                 console.log(mass2);
@@ -697,7 +700,7 @@
 
                         for ( i =0; i < n; i++){
                             for ( j = 0; j < 6; j++) {
-                                mass[i][j] = mass2[i][j];
+                                mass[i][j] = Round(mass2[i][j]);
                             }
                         }
                         console.log('mass');
@@ -714,7 +717,7 @@
                     
                     
                         for ( i =0; i < n; i++){
-                            cur_i = cur_i + mass[i][2];
+                            cur_i = cur_i + Math.round(mass[i][2]);
                             //u_i += cur_i * 1;
                         }
                         
@@ -750,7 +753,7 @@
 
                             v = 0;
                             var n_vers =  mdlNetwork[i][1];
-                            ks = mass[i][0]/n_vers;
+                            ks = Round(mass[i][0]/n_vers);
                             console.log( "UYAZVIMIH "+ mass[i][0]);
                             console.log(" VERSHIN V SLOE "+ n_vers);
                             console.log("KS "+ ks);
@@ -767,7 +770,7 @@
                                 ps = matrix[j][i];
                                 console.log( "PS " + ps);
                                 if (j==0) s++;
-                                v = v + (is*(s-1)*ps*ks*ks);
+                                v = v + Round(is)*Round(s-1)*Round(ps)*Round(ks)*Round(ks);
                             }
 
 
@@ -777,135 +780,135 @@
                             /////////////////////////////////////////////////
 
                             //S->E
-                            mass2[i][1] = mass2[i][1] + p[0][2]*v;
-                            mass2[i][0] = mass2[i][0] - p[0][2]*v;
+                            mass2[i][1] = mass2[i][1] + Round(p[0][2]*v);
+                            mass2[i][0] = mass2[i][0] - Round(p[0][2]*v);
 
                             //S->I
-                            mass2[i][2] = mass2[i][2] + p[0][1]*v;
-                            mass2[i][0] = mass2[i][0] - p[0][1]*v;
+                            mass2[i][2] = mass2[i][2] + Round(p[0][1]*v);
+                            mass2[i][0] = mass2[i][0] - Round(p[0][1]*v);
                             console.log("SHAG " + count + " SLOI  " + i + " mass2 " + mass2[i][2]);
 
                             //S->M
-                            mass2[i][3] = mass2[i][3] + mass[i][0]*p[0][3];
-                            mass2[i][0] = mass2[i][0] - mass[i][0]*p[0][3];
+                            mass2[i][3] = mass2[i][3] + Round(mass[i][0]*p[0][3]);
+                            mass2[i][0] = mass2[i][0] - Round(mass[i][0]*p[0][3]);
 
                             //S->D
-                            mass2[i][4] = mass2[i][4] + mass[i][0]*p[0][4];
-                            mass2[i][0] = mass2[i][0] - mass[i][0]*p[0][4];
+                            mass2[i][4] = mass2[i][4] + Round(mass[i][0]*p[0][4]);
+                            mass2[i][0] = mass2[i][0] - Round(mass[i][0]*p[0][4]);
 
                             //S->R
-                            mass2[i][5] = mass2[i][5] + mass[i][0]*p[0][5];
-                            mass2[i][0] = mass2[i][0] - mass[i][0]*p[0][5];
+                            mass2[i][5] = mass2[i][5] + Round(mass[i][0]*p[0][5]);
+                            mass2[i][0] = mass2[i][0] - Round(mass[i][0]*p[0][5]);
 
                             //            ////////////////////////////////////////////////
 
                             //E->S
-                            mass2[i][0] = mass2[i][0] + mass[i][1]*p[2][0];
-                            mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][0];
+                            mass2[i][0] = mass2[i][0] + Round(mass[i][1]*p[2][0]);
+                            mass2[i][1] = mass2[i][1] - Round(mass[i][1]*p[2][0]);
 
                             //E->I
-                            mass2[i][2] = mass2[i][2] + mass[i][1]*p[2][1];
-                            mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][1];
+                            mass2[i][2] = mass2[i][2] + Round(mass[i][1]*p[2][1]);
+                            mass2[i][1] = mass2[i][1] - Round(mass[i][1]*p[2][1]);
 
                             //E->M
-                            mass2[i][3] = mass2[i][3] + mass[i][1]*p[2][3];
-                            mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][3];
+                            mass2[i][3] = mass2[i][3] + Round(mass[i][1]*p[2][3]);
+                            mass2[i][1] = mass2[i][1] - Round(mass[i][1]*p[2][3]);
 
                             //E->D
-                            mass2[i][4] = mass2[i][4] + mass[i][1]*p[2][4];
-                            mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][4];
+                            mass2[i][4] = mass2[i][4] + Round(mass[i][1]*p[2][4]);
+                            mass2[i][1] = mass2[i][1] - Round(mass[i][1]*p[2][4]);
 
                             //E->R
-                            mass2[i][5] = mass2[i][5] + mass[i][1]*p[2][5];
-                            mass2[i][1] = mass2[i][1] - mass[i][1]*p[2][5];
+                            mass2[i][5] = mass2[i][5] + Round(mass[i][1]*p[2][5]);
+                            mass2[i][1] = mass2[i][1] - Round(mass[i][1]*p[2][5]);
 
                             //            ////////////////////////////////////////////////
 
                             //I->S
-                            mass2[i][0] = mass2[i][0] + mass[i][2]*p[1][0];
-                            mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][0];
+                            mass2[i][0] = mass2[i][0] + Round(mass[i][2]*p[1][0]);
+                            mass2[i][2] = mass2[i][2] - Round(mass[i][2]*p[1][0]);
 
                             //I->E
-                            mass2[i][1] = mass2[i][1] + mass[i][2]*p[1][2];
-                            mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][2];
+                            mass2[i][1] = mass2[i][1] + Round(mass[i][2]*p[1][2]);
+                            mass2[i][2] = mass2[i][2] - Round(mass[i][2]*p[1][2]);
 
                             //I->M
-                            mass2[i][3] = mass2[i][3] + mass[i][2]*p[1][3];
-                            mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][3];
+                            mass2[i][3] = mass2[i][3] + Round(mass[i][2]*p[1][3]);
+                            mass2[i][2] = mass2[i][2] - Round(mass[i][2]*p[1][3]);
 
                             //I->D
-                            mass2[i][4] = mass2[i][4] + mass[i][2]*p[1][4];
-                            mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][4];
+                            mass2[i][4] = mass2[i][4] + Round(mass[i][2]*p[1][4]);
+                            mass2[i][2] = mass2[i][2] - Round(mass[i][2]*p[1][4]);
 
                             //I->R
-                            mass2[i][5] = mass2[i][5] + mass[i][2]*p[1][5];
-                            mass2[i][2] = mass2[i][2] - mass[i][2]*p[1][5];
+                            mass2[i][5] = mass2[i][5] + Round(mass[i][2]*p[1][5]);
+                            mass2[i][2] = mass2[i][2] - Round(mass[i][2]*p[1][5]);
 
                             //            ////////////////////////////////////////////////
 
                             //M->S
-                            mass2[i][0] = mass2[i][0] + mass[i][3]*p[3][0];
-                            mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][0];
+                            mass2[i][0] = mass2[i][0] + Round(mass[i][3]*p[3][0]);
+                            mass2[i][3] = mass2[i][3] - Round(mass[i][3]*p[3][0]);
 
                             //M->E
-                            mass2[i][1] = mass2[i][1] + mass[i][3]*p[3][2];
-                            mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][2];
+                            mass2[i][1] = mass2[i][1] + Round(mass[i][3]*p[3][2]);
+                            mass2[i][3] = mass2[i][3] - Round(mass[i][3]*p[3][2]);
 
                             //M->I
-                            mass2[i][2] = mass2[i][2] + mass[i][3]*p[3][1];
-                            mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][1];
+                            mass2[i][2] = mass2[i][2] + Round(mass[i][3]*p[3][1]);
+                            mass2[i][3] = mass2[i][3] - Round(mass[i][3]*p[3][1]);
 
                             //M->D
-                            mass2[i][4] = mass2[i][4] + mass[i][3]*p[3][4];
-                            mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][4];
+                            mass2[i][4] = mass2[i][4] + Round(mass[i][3]*p[3][4]);
+                            mass2[i][3] = mass2[i][3] - Round(mass[i][3]*p[3][4]);
 
                             //M->R
-                            mass2[i][5] = mass2[i][5] + mass[i][3]*p[3][5];
-                            mass2[i][3] = mass2[i][3] - mass[i][3]*p[3][5];
+                            mass2[i][5] = mass2[i][5] + Round(mass[i][3]*p[3][5]);
+                            mass2[i][3] = mass2[i][3] - Round(mass[i][3]*p[3][5]);
 
                             //            ////////////////////////////////////////////////
 
                             //D->S
-                            mass2[i][0] = mass2[i][0] + mass[i][4]*p[4][0];
-                            mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][0];
+                            mass2[i][0] = mass2[i][0] + Round(mass[i][4]*p[4][0]);
+                            mass2[i][4] = mass2[i][4] - Round(mass[i][4]*p[4][0]);
 
                             //D->E
-                            mass2[i][1] = mass2[i][1] + mass[i][4]*p[4][2];
-                            mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][2];
+                            mass2[i][1] = mass2[i][1] + Round(mass[i][4]*p[4][2]);
+                            mass2[i][4] = mass2[i][4] - Round(mass[i][4]*p[4][2]);
 
                             //D->I
-                            mass2[i][2] = mass2[i][2] + mass[i][4]*p[4][1];
-                            mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][1];
+                            mass2[i][2] = mass2[i][2] + Round(mass[i][4]*p[4][1]);
+                            mass2[i][4] = mass2[i][4] - Round(mass[i][4]*p[4][1]);
 
                             //D->M
-                            mass2[i][3] = mass2[i][3] + mass[i][4]*p[4][3];
-                            mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][3];
+                            mass2[i][3] = mass2[i][3] + Round(mass[i][4]*p[4][3]);
+                            mass2[i][4] = mass2[i][4] - Round(mass[i][4]*p[4][3]);
 
                             //D->R
-                            mass2[i][5] = mass2[i][5] + mass[i][4]*p[4][5];
-                            mass2[i][4] = mass2[i][4] - mass[i][4]*p[4][5];
+                            mass2[i][5] = mass2[i][5] + Round(mass[i][4]*p[4][5]);
+                            mass2[i][4] = mass2[i][4] - Round(mass[i][4]*p[4][5]);
 
                             //            ////////////////////////////////////////////////
 
                             //R->S
-                            mass2[i][0] = mass2[i][0] + mass[i][5]*p[5][0];
-                            mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][0];
+                            mass2[i][0] = mass2[i][0] + Round(mass[i][5]*p[5][0]);
+                            mass2[i][5] = mass2[i][5] - Round(mass[i][5]*p[5][0]);
 
                             //R->E
-                            mass2[i][1] = mass2[i][1] + mass[i][5]*p[5][2];
-                            mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][2];
+                            mass2[i][1] = mass2[i][1] + Round(mass[i][5]*p[5][2]);
+                            mass2[i][5] = mass2[i][5] - Round(mass[i][5]*p[5][2]);
 
                             //R->I
-                            mass2[i][2] = mass2[i][2] + mass[i][5]*p[5][1];
-                            mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][1];
+                            mass2[i][2] = mass2[i][2] + Round(mass[i][5]*p[5][1]);
+                            mass2[i][5] = mass2[i][5] - Round(mass[i][5]*p[5][1]);
 
                             //R->M
-                            mass2[i][3] = mass2[i][3] + mass[i][5]*p[5][3];
-                            mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][3];
+                            mass2[i][3] = mass2[i][3] + Round(mass[i][5]*p[5][3]);
+                            mass2[i][5] = mass2[i][5] - Round(mass[i][5]*p[5][3]);
 
                             //R->D
-                            mass2[i][4] = mass2[i][4] + mass[i][5]*p[5][4];
-                            mass2[i][5] = mass2[i][5] - mass[i][5]*p[5][4];
+                            mass2[i][4] = mass2[i][4] + Round(mass[i][5]*p[5][4]);
+                            mass2[i][5] = mass2[i][5] - Round(mass[i][5]*p[5][4]);
 
                             //            ////////////////////////////////////////////////
                             var n_obs = mass[i][0]+mass[i][1]+mass[i][2]+mass[i][3]+mass[i][4]+mass[i][5];
@@ -925,11 +928,11 @@
                         for ( i=0; i < n; i++){
                             //var index = mdlNetwork[i][0];
                             var stepen = mdlNetwork[i][0];
-                            u= u + /*Math.round(*/(base_b+stepen)*mass[i][2]/**1000)/1000*/;
-                            risk = risk + /*Math.round(*/((1-ks)*stepen*u)/**1000)/1000*/;
+                            u= u + /*Math.round(*/Round((base_b+stepen))*Round(mass[i][2])/**1000)/1000*/;
+                            risk = risk + /*Math.round(*/Round((1-ks)*stepen*u)/**1000)/1000*/;
                         }
 
-                        ep = /*Math.round(*/((summ_b - u)/u)/**1000)/1000*/;
+                        ep = /*Math.round(*/Round((summ_b - u)/u)/**1000)/1000*/;
                    
                     
                         gPointsU.push({"x":count, "y":u, "type":"Ущерб"});
